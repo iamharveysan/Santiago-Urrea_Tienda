@@ -84,7 +84,7 @@ const productos = [
     nombre: "Lámpara decorativa cristal LED",
     precio: 120000,
     categoria: "Lámparas decorativas",
-    img: "https://www.dropbox.com/scl/fi/e92l28uakrmqxwvc9kd15/imagen_2026-04-21_084453744.png?rlkey=5nmp9giklsewxgq6bdcceoeqn&raw=1https://www.dropbox.com/scl/fi/e92l28uakrmqxwvc9kd15/imagen_2026-04-21_084453744.png?rlkey=5nmp9giklsewxgq6bdcceoeqn&raw=1",
+    img: "https://www.dropbox.com/scl/fi/e92l28uakrmqxwvc9kd15/imagen_2026-04-21_084453744.png?rlkey=5nmp9giklsewxgq6bdcceoeqn&raw=1",
     descripcion: "Brillo decorativo y diseño elegante con excelente relación visual-precio."
   },
   {
@@ -122,76 +122,6 @@ const productos = [
 ];
 
 let carrito = new Map();
-function actualizarElo(ganador, perdedor) {
-  const K = 32;
-
-  const r1 = ratings[ganador];
-  const r2 = ratings[perdedor];
-
-  const e1 = 1 / (1 + Math.pow(10, (r2 - r1) / 400));
-  const e2 = 1 / (1 + Math.pow(10, (r1 - r2) / 400));
-
-  ratings[ganador] = Math.round(r1 + K * (1 - e1));
-  ratings[perdedor] = Math.round(r2 + K * (0 - e2));
-
-  guardarRatings();
-}
-function renderTopElo() {
-  const contenedor = document.getElementById("top-elo");
-  if (!contenedor) return;
-
-  contenedor.innerHTML = "";
-
-  const ordenados = [...productos].sort((a, b) => ratings[b.id] - ratings[a.id]);
-
-  ordenados.forEach((p, i) => {
-    contenedor.innerHTML += `
-      <div class="top-card">
-        <h4>#${i + 1} ${p.nombre}</h4>
-        <p>ELO: ${ratings[p.id]}</p>
-      </div>
-    `;
-  });
-}
-
-function generarDuelo() {
-  const contenedor = document.getElementById("duelo-container");
-  if (!contenedor) return;
-
-  let i1 = Math.floor(Math.random() * productos.length);
-  let i2;
-
-  do {
-    i2 = Math.floor(Math.random() * productos.length);
-  } while (i1 === i2);
-
-  const p1 = productos[i1];
-  const p2 = productos[i2];
-
-  contenedor.innerHTML = `
-    <div class="duelo-card">
-      <img src="${p1.img}">
-      <h3>${p1.nombre}</h3>
-      <button onclick="votarDuelo(${p1.id}, ${p2.id})">
-        Elegir
-      </button>
-    </div>
-
-    <div class="duelo-card">
-      <img src="${p2.img}">
-      <h3>${p2.nombre}</h3>
-      <button onclick="votarDuelo(${p2.id}, ${p1.id})">
-        Elegir
-      </button>
-    </div>
-  `;
-}
-
-function votarDuelo(ganador, perdedor) {
-  actualizarElo(ganador, perdedor);
-  renderTopElo();
-  generarDuelo();
-}
 let ultimaCategoriaInteres = localStorage.getItem("ultimaCategoriaInteres") || "todos";
 let ratings = cargarRatings();
 
@@ -258,7 +188,7 @@ function manejarErrorImagen(imgElemento) {
           Imagen pendiente
         </text>
         <text x="50%" y="56%" text-anchor="middle" fill="#857770" font-size="18" font-family="Arial">
-          Revisa la carpeta images
+          Revisa la URL de la imagen
         </text>
       </svg>
     `);
@@ -583,6 +513,7 @@ function renderTopElo() {
         <span class="badge-ranking">#${index + 1}</span>
         <h3>${producto.nombre}</h3>
         <p>${producto.categoria}</p>
+        <p class="elo-score">ELO ${ratings[producto.id]}</p>
       </div>
     `;
 
