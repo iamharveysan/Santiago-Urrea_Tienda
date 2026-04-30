@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mundo Solar | Iluminación moderna y decorativa</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="contenedor-principal">
+    <header class="hero">
+      <div class="hero-texto">
+        <span class="etiqueta">Mundo Solar</span>
+        <h1>Iluminación moderna que transforma tus espacios</h1>
+        <p>
+          Tienda de iluminación con diseños modernos, tecnología LED y productos decorativos
+          de alta calidad para darle vida a tu hogar.
+        </p>
+
+        <div class="hero-datos">
+          <span>📍 Bogotá · Envíos nacionales</span>
+          <span>📲 3212435435</span>
+          <span>📸 @mundosolarhc1</span>
+        </div>
+
+        <div class="hero-acciones">
+          <a href="#catalogo" class="boton boton-principal">Ver catálogo</a>
+          <a href="#contacto" class="boton boton-secundario">Contactar</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2>Compra segura</h2>
+        <p>Transferencias bancarias, Nequi, Daviplata y Llaves Bre-B.</p>
+        <p class="hero-confianza">Productos garantizados y atención personalizada.</p>
+      </div>
+    </header>
+
+    <section class="barra-controles" id="catalogo">
+      <div class="filtros">
+        <label for="categoria">Filtrar por categoría:</label>
+        <select id="categoria">
+          <option value="todos">Todos</option>
+        </select>
+      </div>
+
+      <div class="busqueda">
+        <label for="buscador">Buscar producto:</label>
+        <input type="text" id="buscador" placeholder="Ej: lámpara LED, reloj decorativo..." />
+      </div>
+    </section>
+
+    <main class="layout">
+      <section>
+        <div class="seccion-titulo">
+          <h2>Catálogo de productos</h2>
+          <p>Explora nuestras referencias destacadas en iluminación y decoración.</p>
+        </div>
+        <section id="productos" class="productos"></section>
+      </section>
+
+      <aside class="carrito">
+        <h2>🛒 Carrito de compras</h2>
+
+        <p class="contador-carrito">
+          Productos en carrito: <span id="cantidad-carrito">0</span>
+        </p>
+
+        <ul id="lista-carrito"></ul>
+
+        <div class="resumen">
+          <p><strong>Total:</strong> <span id="total">$0</span></p>
+        </div>
+
+        <div class="acciones-carrito">
+          <button class="vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+          <button class="finalizar" onclick="finalizarCompra()">Proceder al pago</button>
+        </div>
+
+        <div class="metodos-pago">
+          <h3>Medios de pago</h3>
+          <ul>
+            <li>Transferencias bancarias</li>
+            <li>Nequi</li>
+            <li>Daviplata</li>
+            <li>Llaves Bre-B</li>
+          </ul>
+          <p class="nota-pago">
+            El pedido se finaliza por WhatsApp con el resumen de compra y luego se coordina el pago.
+          </p>
+        </div>
+      </aside>
+    </main>
+
+    <section class="beneficios-section">
+      <div class="seccion-titulo">
+        <h2>¿Por qué comprar aquí?</h2>
+      </div>
+
+      <div class="beneficios-grid">
+        <article class="beneficio-card">
+          <span class="icono-beneficio">✨</span>
+          <h3>Iluminación moderna y decorativa</h3>
+          <p>Productos con diseño actual para transformar salas, habitaciones y espacios especiales.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">💡</span>
+          <h3>Tecnología LED</h3>
+          <p>Soluciones de iluminación eficientes que ayudan al ahorro energético y al uso inteligente.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">🎨</span>
+          <h3>Variedad de estilos</h3>
+          <p>Opciones minimalistas, modernas, decorativas, premium y funcionales para diferentes gustos.</p>
+        </article>
+
+        <article class="beneficio-card">
+          <span class="icono-beneficio">🛠️</span>
+          <h3>Durabilidad y calidad</h3>
+          <p>Referencias seleccionadas para ofrecer mejor estética, resistencia y confianza en cada compra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="recomendados-section">
+      <div class="seccion-titulo">
+        <h2 id="titulo-recomendados">Recomendados para ti</h2>
+      </div>
+      <p class="texto-seccion">
+        Selección dinámica basada en tu interés reciente y en el ranking de productos de la tienda.
+      </p>
+      <div id="recomendados" class="recomendados-grid"></div>
+    </section>
+
+    <section class="ranking-elo">
+      <div class="seccion-titulo">
+        <h2>Top de la tienda</h2>
+        <button class="reset-elo" onclick="reiniciarElo()">Reiniciar ranking</button>
+      </div>
+      <p class="texto-seccion">
+        Este ranking se actualiza con votos reales del duelo de productos usando algoritmo ELO.
+      </p>
+      <div id="top-elo" class="carrusel-top"></div>
+    </section>
+
+    <section class="duelo-section">
+      <div class="seccion-titulo">
+        <h2>Duelo de productos</h2>
+      </div>
+      <p class="texto-seccion">
+        Elige tu favorito y ayuda a construir el top de Mundo Solar.
+      </p>
+      <div id="duelo-container" class="duelo-container"></div>
+    </section>
+
+    <section class="confianza-section">
+      <div class="seccion-titulo">
+        <h2>Entrega y confianza</h2>
+      </div>
+
+      <div class="confianza-grid">
+        <article class="confianza-card">
+          <h3>Tipos de entrega</h3>
+          <p>Envíos nacionales y entrega en Bogotá.</p>
+        </article>
+
+        <article class="confianza-card">
+          <h3>Métodos de pago</h3>
+          <p>Transferencias bancarias, Nequi, Daviplata y Llaves Bre-B.</p>
+        </article>
+
+        <article class="confianza-card">
+          <h3>Mensaje de confianza</h3>
+          <p>Compra segura y productos garantizados.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer" id="contacto">
+      <div>
+        <h3>Mundo Solar</h3>
+        <p>Tienda de iluminación moderna y decorativa.</p>
+      </div>
+
+      <div>
+        <p><strong>Ciudad:</strong> Bogotá · Envíos a nivel nacional</p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/573212435435" target="_blank">3212435435</a></p>
+        <p><strong>Instagram:</strong> <a href="https://instagram.com/mundosolarhc1" target="_blank">@mundosolarhc1</a></p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<section class="ranking-elo">
+  <div class="seccion-titulo">
+    <h2>🔥 Top de la tienda</h2>
+    <button class="reset-elo" onclick="reiniciarElo()">Reiniciar ranking</button>
+  </div>
+  <div id="top-elo" class="carrusel-top"></div>
+</section>
+
+<section class="duelo-section">
+  <div class="seccion-titulo">
+    <h2>⚔️ ¿Cuál producto te interesa más?</h2>
+  </div>
+  <div id="duelo-container" class="duelo-container"></div>
+</section>
