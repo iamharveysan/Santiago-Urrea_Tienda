@@ -1,0 +1,667 @@
+:root {
+  --color-principal: #857770;
+  --color-secundario: #f3eae8;
+  --color-fondo: #f8f4f2;
+  --color-texto: #2e2a28;
+  --color-blanco: #ffffff;
+  --color-borde: #dbcfc9;
+  --color-sombra: rgba(80, 60, 50, 0.12);
+  --color-exito: #3a8f64;
+  --color-peligro: #c74f4f;
+  --color-acento: #b7925a;
+  --color-oscuro: #3d3531;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #f9f6f4 0%, #f3eae8 100%);
+  color: var(--color-texto);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contenedor-principal {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 28px 0 50px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 24px;
+  background: linear-gradient(135deg, #ffffff, #f2e9e6);
+  border: 1px solid var(--color-borde);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 12px 30px var(--color-sombra);
+  margin-bottom: 24px;
+}
+
+.etiqueta {
+  display: inline-block;
+  background: rgba(133, 119, 112, 0.14);
+  color: var(--color-principal);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--color-oscuro);
+}
+
+.hero p {
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.hero-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.hero-datos span {
+  background: var(--color-blanco);
+  border: 1px solid var(--color-borde);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.boton:hover,
+button:hover {
+  transform: translateY(-2px);
+  opacity: 0.96;
+}
+
+.boton-principal {
+  background: var(--color-principal);
+  color: var(--color-blanco);
+}
+
+.boton-secundario {
+  background: var(--color-secundario);
+  color: var(--color-oscuro);
+  border: 1px solid var(--color-borde);
+}
+
+.hero-card {
+  background: var(--color-principal);
+  color: var(--color-blanco);
+  border-radius: 20px;
+  padding: 24px;
+  align-self: stretch;
+  box-shadow: 0 10px 25px rgba(133, 119, 112, 0.22);
+}
+
+.hero-card h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.hero-confianza {
+  font-weight: bold;
+  color: #fff6f3;
+}
+
+.barra-controles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 24px var(--color-sombra);
+}
+
+.filtros,
+.busqueda {
+  display: grid;
+  gap: 8px;
+}
+
+.filtros label,
+.busqueda label {
+  font-weight: bold;
+  color: var(--color-oscuro);
+}
+
+.filtros select,
+.busqueda input {
+  min-height: 46px;
+  border-radius: 12px;
+  border: 1px solid var(--color-borde);
+  background: var(--color-secundario);
+  padding: 0 14px;
+  outline: none;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.seccion-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.seccion-titulo h2 {
+  margin: 0;
+  color: var(--color-oscuro);
+}
+
+.seccion-titulo p,
+.texto-seccion {
+  margin: 0;
+  color: #655c58;
+  line-height: 1.5;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.producto {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px var(--color-sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.producto:hover,
+.recomendado-card:hover,
+.top-card:hover,
+.duelo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(80, 60, 50, 0.16);
+}
+
+.producto img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background: #ece4e1;
+}
+
+.producto-contenido {
+  padding: 16px;
+}
+
+.badge-categoria {
+  display: inline-block;
+  background: rgba(133, 119, 112, 0.12);
+  color: var(--color-principal);
+  font-size: 0.82rem;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.producto h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  min-height: 48px;
+  color: var(--color-oscuro);
+}
+
+.producto p {
+  margin: 0 0 14px;
+  line-height: 1.5;
+  color: #665d59;
+  font-size: 0.95rem;
+}
+
+.precio {
+  color: var(--color-acento);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-weight: bold;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.boton-agregar {
+  width: 100%;
+  background: var(--color-principal);
+  color: var(--color-blanco);
+}
+
+.carrito {
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 24px var(--color-sombra);
+  position: sticky;
+  top: 18px;
+}
+
+.carrito h2,
+.metodos-pago h3 {
+  margin-top: 0;
+  color: var(--color-oscuro);
+}
+
+.contador-carrito {
+  background: var(--color-secundario);
+  border: 1px solid var(--color-borde);
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+#lista-carrito {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.item-carrito {
+  border: 1px solid var(--color-borde);
+  background: #fffaf8;
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.item-carrito strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.item-detalle {
+  color: #6e6560;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.controles-cantidad {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.controles-cantidad button {
+  background: var(--color-principal);
+  color: #fff;
+  min-width: 36px;
+}
+
+.controles-cantidad .eliminar {
+  background: var(--color-peligro);
+}
+
+.carrito-vacio {
+  color: #7b726e;
+  font-style: italic;
+}
+
+.resumen {
+  background: var(--color-secundario);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.acciones-carrito {
+  display: grid;
+  gap: 10px;
+}
+
+.vaciar {
+  background: var(--color-peligro);
+  color: #fff;
+}
+
+.finalizar {
+  background: var(--color-exito);
+  color: #fff;
+}
+
+.metodos-pago {
+  margin-top: 18px;
+  border-top: 1px solid var(--color-borde);
+  padding-top: 16px;
+}
+
+.metodos-pago ul {
+  padding-left: 18px;
+  margin: 0 0 10px;
+}
+
+.nota-pago {
+  font-size: 0.92rem;
+  color: #6e6560;
+}
+
+.beneficios-section,
+.recomendados-section,
+.ranking-elo,
+.duelo-section,
+.confianza-section {
+  margin-top: 28px;
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 10px 24px var(--color-sombra);
+}
+
+.beneficios-grid,
+.confianza-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.beneficio-card,
+.confianza-card {
+  background: #fffaf8;
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.icono-beneficio {
+  font-size: 1.8rem;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.beneficio-card h3,
+.confianza-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: var(--color-oscuro);
+}
+
+.beneficio-card p,
+.confianza-card p {
+  margin: 0;
+  line-height: 1.5;
+  color: #655d58;
+}
+
+.recomendados-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.recomendado-card,
+.top-card,
+.duelo-card {
+  background: #fffaf8;
+  border: 1px solid var(--color-borde);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(80, 60, 50, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.recomendado-card img,
+.top-card img,
+.duelo-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #ece4e1;
+}
+
+.recomendado-info,
+.top-card-info,
+.duelo-info {
+  padding: 14px;
+}
+
+.recomendado-info h3,
+.top-card-info h3,
+.duelo-info h3 {
+  margin: 0 0 8px;
+  color: var(--color-oscuro);
+}
+
+.recomendado-info p,
+.top-card-info p,
+.duelo-info p {
+  margin: 0 0 8px;
+  color: #665d59;
+}
+
+.precio-recomendado,
+.elo-score {
+  color: var(--color-acento);
+  font-weight: bold;
+}
+
+.carrusel-top {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.carrusel-top::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carrusel-top::-webkit-scrollbar-thumb {
+  background: #c4b6b0;
+  border-radius: 999px;
+}
+
+.top-card {
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.badge-ranking {
+  display: inline-block;
+  background: var(--color-principal);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
+.reset-elo {
+  background: var(--color-oscuro);
+  color: #fff;
+}
+
+.duelo-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.duelo-boton {
+  width: 100%;
+  background: var(--color-acento);
+  color: #fff;
+}
+
+.footer {
+  margin-top: 30px;
+  background: var(--color-oscuro);
+  color: #fff;
+  border-radius: 22px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.footer h3 {
+  margin-top: 0;
+}
+
+.footer p {
+  margin: 6px 0;
+  color: #efe8e5;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .layout,
+  .barra-controles,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .carrito {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .duelo-container {
+    grid-template-columns: 1fr;
+  }
+
+  .producto img,
+  .recomendado-card img,
+  .top-card img,
+  .duelo-card img {
+    height: 210px;
+  }
+}
+
+@media (max-width: 520px) {
+  .contenedor-principal {
+    width: min(94%, 1200px);
+  }
+
+  .hero,
+  .beneficios-section,
+  .recomendados-section,
+  .ranking-elo,
+  .duelo-section,
+  .confianza-section,
+  .carrito,
+  .barra-controles,
+  .footer {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .producto h3 {
+    min-height: auto;
+  }
+}
+.duelo-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.duelo-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.duelo-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.duelo-boton {
+  background: #857770;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.top-card {
+  min-width: 200px;
+  background: #fff;
+  margin: 10px;
+  padding: 10px;
+}
